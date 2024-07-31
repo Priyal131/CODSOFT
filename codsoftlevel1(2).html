@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Our Community</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    margin: 10px 0;
+}
+
+/* Main Section */
+main {
+    padding: 20px;
+}
+
+/* Call to Action */
+.cta {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.cta h2 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.cta p {
+    font-size: 1.2em;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+}
+
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.feature {
+    width: 30%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.feature h3 {
+    margin-top: 0;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+@media (max-width: 768px) {
+    .features {
+        flex-direction: column;
+    }
+
+    .feature {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Welcome to Your Next Adventure</h1>
+            <p>Join our community and start discovering new experiences today!</p>
+        </div>
+    </header>
+    <main>
+        <section class="cta">
+            <div class="container">
+                <h2>Exclusive Access Awaits</h2>
+                <p>Sign up now and get instant access to our premium content and offers.</p>
+                <a href="#signup" class="cta-button">Get Started</a>
+            </div>
+        </section>
+        <section class="features">
+            <div class="container">
+                <div class="feature">
+                    <h3>Feature 1: Personalized Recommendations</h3>
+                    <p>Receive tailored suggestions based on your preferences and interests.</p>
+                </div>
+                <div class="feature">
+                    <h3>Feature 2: 24/7 Support</h3>
+                    <p>Our support team is here to help you anytime, anywhere.</p>
+                </div>
+                <div class="feature">
+                    <h3>Feature 3: Exclusive Content</h3>
+                    <p>Enjoy content that is available only to our members.</p>
+                </div>
+            </div>
+        </section>
+        <section id="signup" class="signup">
+            <div class="container">
+                <h2>Sign Up for Free</h2>
+                <form action="/submit-form" method="post">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <button type="submit" class="signup-button">Sign Up</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Kabir's Comp. All rights reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+</body>
+</html>
