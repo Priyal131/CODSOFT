@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.calculator {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.display {
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#display {
+    width: 100%;
+    border: none;
+    background: none;
+    color: #fff;
+    font-size: 2em;
+    text-align: right;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+button {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #f0f0f0;
+}
+
+button[data-action="clear"] {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+button[data-action="clear"]:hover {
+    background-color: #e60000;
+}
+
+button[data-action="="] {
+    background-color: #4caf50;
+    color: white;
+    grid-column: span 4;
+}
+
+button[data-action="="]:hover {
+    background-color: #388e3c;
+}
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const display = document.getElementById('display');
+    let currentInput = '';
+    let operator = '';
+    let firstNumber = '';
+    let secondNumber = '';
+    
+    const buttons = document.querySelectorAll('.btn');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const action = e.target.dataset.action;
+            
+            if (action === 'clear') {
+                currentInput = '';
+                operator = '';
+                firstNumber = '';
+                secondNumber = '';
+                display.value = '';
+            } else if (action === '=') {
+                if (firstNumber && operator && currentInput) {
+                    secondNumber = currentInput;
+                    currentInput = '';
+                    display.value = calculate(firstNumber, operator, secondNumber);
+                    firstNumber = display.value;
+                    operator = '';
+                    secondNumber = '';
+                }
+            } else if (['+', '-', '*', '/'].includes(action)) {
+                if (currentInput) {
+                    if (firstNumber) {
+                        secondNumber = currentInput;
+                        firstNumber = calculate(firstNumber, operator, secondNumber);
+                        display.value = firstNumber;
+                    } else {
+                        firstNumber = currentInput;
+                    }
+                    operator = action;
+                    currentInput = '';
+                } else {
+                    operator = action;
+                }
+            } else {
+                currentInput += action;
+                display.value = currentInput;
+            }
+        });
+    });
+    
+    function calculate(a, op, b) {
+        a = parseFloat(a);
+        b = parseFloat(b);
+        switch (op) {
+            case '+': return a + b;
+            case '-': return a - b;
+            case '*': return a * b;
+            case '/': return a / b;
+            default: return '';
+        }
+    }
+});
+    </script>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="display" disabled>
+        </div>
+        <div class="buttons">
+            <button class="btn" data-action="clear">C</button>
+            <button class="btn" data-action="/">/</button>
+            <button class="btn" data-action="*">*</button>
+            <button class="btn" data-action="-">-</button>
+            <button class="btn" data-action="7">7</button>
+            <button class="btn" data-action="8">8</button>
+            <button class="btn" data-action="9">9</button>
+            <button class="btn" data-action="+">+</button>
+            <button class="btn" data-action="4">4</button>
+            <button class="btn" data-action="5">5</button>
+            <button class="btn" data-action="6">6</button>
+            <button class="btn" data-action="=">=</button>
+            <button class="btn" data-action="1">1</button>
+            <button class="btn" data-action="2">2</button>
+            <button class="btn" data-action="3">3</button>
+            <button class="btn" data-action="0">0</button>
+            <button class="btn" data-action=".">.</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
